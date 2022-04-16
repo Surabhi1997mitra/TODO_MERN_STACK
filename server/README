@@ -1,0 +1,72 @@
+Description of Dependencies:
+
+cors: allows cross-origin api calls
+dotenv: needed to access data from .env files
+express: web application framework for node.js
+mongoose: It is needed to define the database schema and connecting to mongoDB
+
+Developement Dependencies: 
+nodemon
+
+1. Change entry point to server.js
+2. Store MONGO_URI in .env
+3. Create Application Structure:
+    1. config: Inside the config folder, create a file named db.js. This file will contain the required code for   connecting to the MongoDB database.
+
+    2. controllers: The controllers folder will contain the files which will have the methods for the end points to communicate with the database.
+
+    3. models: The models folder, will contain the files which will define the MongoDB schema
+
+    4. routers: The routers folder will contain the files with the endpoints.
+
+4. Update scripts in package.json
+5. Setting Up Server: 
+    1. Import express
+    2. Initialize our app using express()
+    3. Set up a get method for the endpoint http://localhost:8000 using app.get()
+    4. Set the PORT to 8000 for our server to run
+    5. Have our app to listen to PORT using app.listen()
+6. Setting Up Database accessing file (db.js): 
+    1. Import mongoose
+    2. Import MONGO_URI from .env
+    3. Define the connectDB methof for connecting to the database
+    4. Export the connectDB method to be called in server.js
+
+------------ This makes the server running on port 8000 ------------
+
+7. In server.js implement these:
+    1. Import dotenv
+    2. Import connectDB method from config/db.js
+    3. Call the connectDB method.
+
+------------ Database gets connected to our application ------------
+
+8. Define schema of todo collection 
+
+------------ Router ------------
+
+9. Define the api endpoints for the CRUD operations in routes :
+    1. Import express
+    2. Initialize router
+    3. We will later import the methods for the endpoint from controllers
+    4. Define a GET method to read all the todo
+    5. Define a POST method to create a new todo
+    6. Define a PUT method to update a existing todo
+    7. Define a DELETE method to delete a existing todo
+    8. Export the router
+
+------------ Controller ------------
+
+10. Define methods for end-point of controller: 
+    1. Import Todo model from models/todo
+    2. Define and export the following four methods
+        getAllTodo
+        postCreateTodo
+        putUpdateTodo
+        deleteTodo
+
+11. Add the methods created in controller end points to the routes
+12. Add the endpoints of routes in server.js
+13. Adding cors : Added cors so that we can make the api calls from the frontend application like react.
+    CORS stands for Cross-Origin Resource Sharing . It allows us to relax the security applied to an API. This is done by bypassing the Access-Control-Allow-Origin headers, which specify which origins can access the API.
+
